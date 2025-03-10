@@ -2,6 +2,22 @@
 const express = require('express');
 const app = express();
 
+app.get('/assistant/greet', (req, res) => {
+    const name = req.query.name;
+    const week = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    const day = new Date().getDate();
+    const currDay = week[day]
+    if (currDay === "Monday"){
+      res.send({welcomeMessage: `Hello, ${name}! Welcome to our assistant app!`,
+                dayMessage: "It's friday! The weekend is near!"})
+    }
+    else {
+      res.send({welcomeMessage: `Hello, ${name}! Welcome to our assistant app!`,
+      dayMessage: "Have a wonderful day!"})
+    }
+
+});
+
 /*
 Task:
 You need to build an API for a virtual assistant that provides customized responses.
